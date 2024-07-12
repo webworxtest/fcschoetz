@@ -201,7 +201,7 @@ h4 {
     opacity: 1;
 }
 .news-content img {
-    width: 25rem;
+    max-width: 25rem;
     height: auto;
     margin: 1.5rem auto 1rem auto;
     display: block;
@@ -391,6 +391,8 @@ h4 {
     .mobile-menu .dropdown-icon {
         margin-left: 0.5rem;
         transition: transform 0.3s;
+        position: absolute;
+        right: 10px;
     }
     .mobile-menu .dropdown.open .dropdown-icon {
         transform: rotate(180deg);

@@ -159,7 +159,7 @@
                     <a href="#">TEAMS<span class="dropdown-icon">&#9660;</span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown">
-                            <a href="#">1. Mannschaft</a>
+                            <a href="#">1. Mannschaft &#9660;</a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Tabelle</a></li>
                                 <li><a href="#">Spieler</a></li>
@@ -169,7 +169,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#">2. Mannschaft</a>
+                            <a href="#">2. Mannschaft &#9660;</a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Tabelle</a></li>
                                 <li><a href="#">Spieler</a></li>
@@ -179,7 +179,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#">3. Mannschaft</a>
+                            <a href="#">3. Mannschaft &#9660;</a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Tabelle</a></li>
                                 <li><a href="#">Spieler</a></li>
@@ -189,7 +189,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#">Junioren</a>
+                            <a href="#">Junioren &#9660;</a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Juko</a></li>
                                 <li><a href="#">Junioren B</a></li>
@@ -258,13 +258,11 @@
                 <a href="#">ANSEHEN</a>
             </div>
         </div>
-
     <div class="dots-container">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-
     </section>
 
     <section id="spiele">
@@ -426,20 +424,33 @@
 </script>
 <!-------------------SCRIPT MOBILE NAV - DROPDOWNS------------------->
 <script>
-    document.getElementById('menu-icon').addEventListener('click', function() {
-        this.classList.toggle('open');
-        document.getElementById('mobile-menu').classList.toggle('open');
-    });
+    // JavaScript für das Dropdown-Menü
+    document.addEventListener('DOMContentLoaded', function() {
+        // Eventlistener für das Mobile-Menü-Icon hinzufügen
+        document.getElementById('menu-icon').addEventListener('click', function() {
+            this.classList.toggle('open');
+            document.getElementById('mobile-menu').classList.toggle('open');
+        });
 
-    document.querySelectorAll('.mobile-menu .dropdown > a').forEach(function(dropdownToggle) {
-        dropdownToggle.addEventListener('click', function(event) {
-            event.preventDefault();
-            const parent = this.parentElement;
-            parent.classList.toggle('open');
+        // Alle Dropdown-Menüs standardmäßig schließen
+        const dropdownMenus = document.querySelectorAll('.mobile-menu .dropdown ul');
+        dropdownMenus.forEach(function(menu) {
+            menu.style.display = 'none';
+        });
+
+        // Eventlistener für die Dropdown-Pfeile der Hauptlinks und Teams hinzufügen
+        const dropdownToggles = document.querySelectorAll('.mobile-menu .dropdown > a');
+        dropdownToggles.forEach(function(dropdownToggle) {
+            dropdownToggle.addEventListener('click', function(event) {
+                event.preventDefault();
+                const parent = this.parentElement;
+                const submenu = parent.querySelector('ul');
+                submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+                parent.classList.toggle('open');
+            });
         });
     });
 </script>
-
 
 </body>
 </html>
